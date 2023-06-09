@@ -11,22 +11,23 @@ function App({todolist}) {
 
     <div className="App">
       <div>
-        <input type='text' placeholder='enter task' value={newTask} onChange={(e) => setNewTask(e.target.value)}/>
+        <input type='text' placeholder='enter task...' value={newTask} onChange={(e) => setNewTask(e.target.value)} className='input'/>
+       
         <button onClick={() => {dispatch(addTask(newTask))
          setNewTask('')
         }
-      }>add task</button>
+      } className='btn'>add task</button>
       </div>
       <div>
-        <ul>
+        <ol>
         {todolist.map((todo, id) => {
             return <div key={todo.id} >
-              <li style={{color: todo.completed && "green"}}>{todo.task}</li>
-              <button onClick={() => dispatch(doneTask(todo.id))}>done</button>
-              <button onClick={() => { dispatch(deleteTask(todo.id))} }>delete</button>
+              <li className='text' style={{color: todo.completed && "green"}}>{todo.task}</li>
+              <button onClick={() => dispatch(doneTask(todo.id))} className='btn' style={{backgroundColor: "green"}}>done</button>
+              <button onClick={() => { dispatch(deleteTask(todo.id))} } className='btn' style={{backgroundColor: '#8b0000'}}>delete</button>
             </div>
       })}
-          </ul>
+          </ol>
           </div>
     </div>
   );
